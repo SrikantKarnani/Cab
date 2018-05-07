@@ -1,14 +1,11 @@
 <?php
-   require_once "phpmailer/PHPMailerAutoload.php"; //include phpmailer class
-   
-   if(isset($_POST['submit'])) 
-    {
-   
+    //include phpmailer class
+	require '/phpmailer/PHPMailerAutoload.php';
    // STATIC DATA MANAGE	 
    $currencyType = "&#163;"; 				// CURRENCY HTML CODE// From here https://www.toptal.com/designers/htmlarrows/currency/
    $price = 2; 					   			// $2/km you can change as you charged 	
    $subject = "For Cab Booking";			// Main Subject 
-   $setFroms = "shadank7@gmail.com";		// Set From <------------------------------- CHANGE IT --------------------
+   $setFroms = "khansharukh1732@gmail.com";		// Set From <------------------------------- CHANGE IT --------------------
    
    // FORM DATA 
    $vehicle = $_POST['vehicle'];
@@ -73,7 +70,7 @@
    else{$package_div = ""; }
    
      
-     if( email != "")
+     if( $email != "")
      {
    	         
    $message = "
@@ -181,33 +178,27 @@
      }
    
     $mail = new PHPMailer();  
-   $mail->IsSMTP();  // Sets up a SMTP connection  
-    $mail->IsMail(); 
-    $mail->SMTPAuth = true;         // Connection with the SMTP does require authorization    
-    $mail->SMTPSecure = "tls";      // Connect using a TLS/SSL connection  
-    $mail->Host = "ss://smtp.gmail.com";  //Mail SMTP server <------------------------------- CHANGE IT --------------------
-    $mail->Port = 465;  // ssl:465 / tls:587 Mail SMTP port  <------------------------------- CHANGE IT --------------------
-    $mail->Encoding = '7bit';
-    $Mail->SMTPDebug   = 2; // 2 to enable SMTP debug information
-    
-   // Authentication  
-    $mail->Username   = "entertainmentd7@gmail.com"; // Your full Mail address <------------------------------- CHANGE IT --------------------
-    $mail->Password   = "PaSS  WoRD"; // Your Mail password <------------------------------ CHANGE IT --------------------
-     
-   // // Compose
-    $mail->SetFrom("shadank7@gmail.com","shadank7"); // <------------------------------- CHANGE IT --------------------
-    $mail->AddReplyTo($_POST['emailid'], $_POST['fullname']);
+   // $mail->IsSMTP();  // Sets up a SMTP connection  
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+			$mail->Host = 'smtp.gmail.com'; 								// Specify main and backup SMTP servers
+			$mail->SMTPAuth = true;                               // Enable SMTP authentication
+			$mail->Username = "khansharukh1732@gmail.com";
+			$mail->Password = "khansharukh17321732";                           // SMTP password
+			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+			$mail->Port = 587; 			// TCP port to connect to
+			$mail->SMTPDebug=4;
+
+			$mail->setFrom("khansharukh1732@gmail", 'Sharukh Khan');
+			$mail->addReplyTo(EMAIL);
+			//$mail->addCC($_POST['CC']);
+			//$mail->addBCC($_POST['BCC']);
     $mail->Subject = ($subject);      // Subject (which isn't required)  
     $mail->isHTML(true);
     $mail->MsgHTML($message);
-   
     // Send To  
-    $mail->AddAddress($email,$name); // Sent a copy to user
-    $mail->AddAddress("entertainmentd7@gmail.com","entertainmentd7"); // Where to Received it - Recipient <------------------------------- CHANGE IT --------------------
+    $mail->AddAddress($email,$name); // Sent a copy to user // Where to Received it - Recipient <------------------------------- CHANGE IT --------------------
     $result = $mail->Send();		// Send!  
     $message = $result ? '<div class="alert alert-success" role="alert"><strong>Success!</strong>Message Sent Successfully!</div>' : '<div class="alert alert-danger" role="alert"><strong>Error!</strong>There was a problem delivering the message.</div>';  
    
     unset($mail);
-   
-   }
    ?>

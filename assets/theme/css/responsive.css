@@ -841,7 +841,7 @@ header.header_v2 {
     .ourvehicle .nav-tabs {
         float: left!important;
         width: 100%;
-        
+        overflow: hidden;
     }
     .ourvehicle .nav-tabs li {
         display: inline-block;
