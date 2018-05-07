@@ -1,6 +1,6 @@
 <?php
     //include phpmailer class
-	require 'opt/app-root/src/php/phpmailer/PHPMailerAutoload.php';
+	require $OPENSHIFT_HOMEDIR.'php/phpmailer/PHPMailerAutoload.php';
    // STATIC DATA MANAGE	 
    $currencyType = "&#163;"; 				// CURRENCY HTML CODE// From here https://www.toptal.com/designers/htmlarrows/currency/
    $price = 2; 					   			// $2/km you can change as you charged 	
