@@ -1,6 +1,6 @@
 <?php
     //include phpmailer class
-	require $OPENSHIFT_HOMEDIR.'php/phpmailer/PHPMailerAutoload.php';
+	require '/phpmailer/PHPMailerAutoload.php';
    // STATIC DATA MANAGE	 
    $currencyType = "&#163;"; 				// CURRENCY HTML CODE// From here https://www.toptal.com/designers/htmlarrows/currency/
    $price = 2; 					   			// $2/km you can change as you charged 	
@@ -183,7 +183,7 @@
 			$mail->Host = 'smtp.gmail.com'; 								// Specify main and backup SMTP servers
 			$mail->SMTPAuth = true;                               // Enable SMTP authentication
 			$mail->Username = "khansharukh1732@gmail.com";
-			$mail->Password = "khansharukh17321732";                           // SMTP password
+			$mail->Password = "khansrk786";                           // SMTP password
 			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			$mail->Port = 587; 			// TCP port to connect to
 			$mail->SMTPDebug=4;
